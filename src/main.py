@@ -4,7 +4,16 @@ import sys
 import logging
 import time
 from pathlib import Path
-from dotenv import load_dotenv
+# Load .env manually to handle subprocess context
+project_root = Path(__file__).parent.parent
+env_file = project_root / ".env"
+if env_file.exists():
+    with open(env_file) as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                key, value = line.split("=", 1)
+                os.environ[key.strip()] = value.strip()
 from datetime import datetime
 
 # Add src to path
@@ -32,9 +41,6 @@ def main():
     logger.info("=" * 60)
     logger.info("Employee Feedback Intelligence Agent Started")
     logger.info("=" * 60)
-
-    # Load environment variables
-    load_dotenv()
 
     api_key = os.getenv('ANTHROPIC_API_KEY')
     if not api_key:

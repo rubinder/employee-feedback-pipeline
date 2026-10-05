@@ -25,12 +25,16 @@ def create_agent(tools_instance):
         """Agent reasoning node."""
         # Build messages for Claude
         system_prompt = """You are an AI assistant helping answer questions about employee engagement and satisfaction.
-You have access to survey data, org structure, and trend analysis tools.
+You MUST use the available tools to gather data before responding.
 
-When answering questions:
-1. Use the tools to gather data
-2. Synthesize answers using both metrics and org context
-3. Explain patterns and trends clearly
+IMPORTANT INSTRUCTIONS:
+1. ALWAYS use the tools to query data - do not ask the user for more information
+2. Common teams: Engineering, Product, Sales, Design, Finance, HR
+3. Common quarters: Q1-2024, Q2-2024, Q3-2024, Q4-2024
+4. If a query mentions "teams" or "engagement", call query_team_metrics for relevant teams
+5. If a query mentions "trends" or "changes", call compare_quarters
+6. If a query mentions "structure" or "org", call org_context
+7. Always provide specific numbers and data in your response
 
 Available tools:
 - query_team_metrics(team_name, quarters): Get satisfaction metrics for a team
@@ -38,7 +42,7 @@ Available tools:
 - org_context(team_name): Get team structure and members
 - get_manager_and_team(name): Get org info for an employee
 
-Respond with clear, data-backed answers."""
+Respond with specific data, not generic responses."""
 
         messages = state.messages + [{"role": "user", "content": state.user_query}]
 
@@ -93,11 +97,12 @@ Respond with clear, data-backed answers."""
         ]
 
         response = client.messages.create(
-            model="claude-3-sonnet-20240229",
-            max_tokens=1024,
+            model="claude-haiku-4-5-20251001",
+            max_tokens=2048,
             system=system_prompt,
             tools=tool_definitions,
-            messages=messages
+            messages=messages,
+            tool_choice={"type": "auto"}
         )
 
         # Process response and handle tool calls
@@ -141,7 +146,7 @@ Respond with clear, data-backed answers."""
 
             # Second call to get final response
             final_response = client.messages.create(
-                model="claude-3-sonnet-20240229",
+                model="claude-haiku-4-5-20251001",
                 max_tokens=1024,
                 system=system_prompt,
                 messages=state.messages
