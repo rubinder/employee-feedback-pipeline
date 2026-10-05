@@ -1,0 +1,103 @@
+2026-10-05 15:57:52,270 - __main__ - INFO - ============================================================
+2026-10-05 15:57:52,270 - __main__ - INFO - Employee Feedback Intelligence Agent Started
+2026-10-05 15:57:52,270 - __main__ - INFO - ============================================================
+2026-10-05 15:57:52,271 - __main__ - INFO - Initializing pipeline...
+2026-10-05 15:57:52,271 - __main__ - INFO - Building org graph...
+2026-10-05 15:57:52,271 - __main__ - INFO - Graph built: 15 nodes, 33 edges
+2026-10-05 15:57:52,271 - __main__ - INFO - Connecting to DuckDB...
+2026-10-05 15:57:52,275 - __main__ - INFO - Database connected and tools initialized
+2026-10-05 15:57:52,275 - __main__ - INFO - Creating LangGraph agent...
+2026-10-05 15:57:52,275 - __main__ - INFO - Agent ready for queries
+2026-10-05 15:57:52,275 - __main__ - INFO - 
+--- Query #1 ---
+2026-10-05 15:57:52,275 - __main__ - INFO - User Query: Show Engineering team metrics
+2026-10-05 15:57:52,286 - __main__ - ERROR - Error during query: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+Traceback (most recent call last):
+  File "/Users/robran/IdeaProjects/employee_feedback_pipeline/src/main.py", line 118, in main
+    result = agent_node(state)
+  File "/Users/robran/IdeaProjects/employee_feedback_pipeline/src/agent.py", line 95, in agent_node
+    response = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+    ...<3 lines>...
+        messages=messages
+    )
+  File "/opt/anaconda3/lib/python3.13/site-packages/anthropic/_utils/_utils.py", line 282, in wrapper
+    return func(*args, **kwargs)
+  File "/opt/anaconda3/lib/python3.13/site-packages/anthropic/resources/messages/messages.py", line 996, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/v1/messages",
+        ^^^^^^^^^^^^^^^
+    ...<30 lines>...
+        stream_cls=Stream[RawMessageStreamEvent],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/anaconda3/lib/python3.13/site-packages/anthropic/_base_client.py", line 1364, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/site-packages/anthropic/_base_client.py", line 1058, in request
+    request = self._build_request(options, retries_taken=retries_taken)
+  File "/opt/anaconda3/lib/python3.13/site-packages/anthropic/_base_client.py", line 521, in _build_request
+    headers = self._build_headers(options, retries_taken=retries_taken)
+  File "/opt/anaconda3/lib/python3.13/site-packages/anthropic/_base_client.py", line 451, in _build_headers
+    self._validate_headers(headers_dict, custom_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/site-packages/anthropic/_client.py", line 196, in _validate_headers
+    raise TypeError(
+        '"Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"'
+    )
+TypeError: "Could not resolve authentication method. Expected either api_key or auth_token to be set. Or for one of the `X-Api-Key` or `Authorization` headers to be explicitly omitted"
+2026-10-05 15:57:52,290 - __main__ - INFO - Session ended by user
+2026-10-05 15:57:52,290 - __main__ - INFO - ============================================================
+2026-10-05 15:57:52,290 - __main__ - INFO - Session Summary: 1 queries in 0.01s
+2026-10-05 15:57:52,290 - __main__ - INFO - ============================================================
+2026-10-05 15:59:16,715 - __main__ - INFO - ============================================================
+2026-10-05 15:59:16,716 - __main__ - INFO - Employee Feedback Intelligence Agent Started
+2026-10-05 15:59:16,716 - __main__ - INFO - ============================================================
+2026-10-05 15:59:16,716 - __main__ - INFO - Initializing pipeline...
+2026-10-05 15:59:16,716 - __main__ - INFO - Building org graph...
+2026-10-05 15:59:16,716 - __main__ - INFO - Graph built: 15 nodes, 33 edges
+2026-10-05 15:59:16,716 - __main__ - INFO - Connecting to DuckDB...
+2026-10-05 15:59:16,721 - __main__ - INFO - Database connected and tools initialized
+2026-10-05 15:59:16,721 - __main__ - INFO - Creating LangGraph agent...
+2026-10-05 15:59:16,721 - __main__ - INFO - Agent ready for queries
+2026-10-05 15:59:16,721 - __main__ - INFO - 
+--- Query #1 ---
+2026-10-05 15:59:16,721 - __main__ - INFO - User Query: Which teams show declining engagement?
+2026-10-05 15:59:19,878 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-10-05 15:59:20,153 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2026-10-05 15:59:24,212 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-10-05 15:59:24,213 - __main__ - INFO - Agent Response (completed in 7.49s):
+2026-10-05 15:59:24,213 - __main__ - INFO - Based on the data I've gathered, here's what I found:
+
+## Team Engagement Overview (2024)
+
+**Teams with Declining Engagement:**
+
+1. **Product Team** - Most significant decline
+   - Q1-2024: 4.0 satisfaction
+   - Q2-2024: 4.0 satisfaction
+   - Q3-2024: 4.67 satisfaction (peak)
+   - Q4-2024: 3.5 satisfaction ⚠️
+   - **Sentiment shift**: Q4 shows only 50% positive sentiment (down from 100%)
+
+2. **Sales Team** - Moderate decline
+   - Q1-2024: 4.33 satisfaction
+   - Q2-2024: 4.5 satisfaction (peak)
+   - Q3-2024: 4.33 satisfaction
+   - Q4-2024: 4.0 satisfaction (slight decline)
+   - **Sentiment concern**: Returned to 66.7% positive in Q4 (from 100% in Q3)
+
+**Stable/Improving Teams:**
+
+- **Engineering**: Remains stable (4.33-4.67 range) with consistently 100% positive sentiment
+- **Design**: Improving trend, reached 4.5 in Q4 with 100% positive sentiment
+- **Finance**: Stable at 4.0 with mostly positive sentiment
+
+## Key Insight
+The **Product Team** shows the most concerning trend with a **1.17-point drop** from Q3 to Q4, coupled with a significant shift in sentiment from all positive to only 50% positive. This warrants investigation into Q4 changes affecting the Product team.
+2026-10-05 15:59:24,213 - __main__ - INFO - Session ended by user
+2026-10-05 15:59:24,213 - __main__ - INFO - ============================================================
+2026-10-05 15:59:24,213 - __main__ - INFO - Session Summary: 1 queries in 7.49s
+2026-10-05 15:59:24,213 - __main__ - INFO - ============================================================
