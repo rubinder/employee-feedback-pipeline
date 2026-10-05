@@ -1,4 +1,5 @@
 import duckdb
+import re
 from typing import Dict, List, Optional
 from graph import OrgGraph
 
@@ -21,9 +22,17 @@ class SurveyTools:
         """
         team_name = team_name.title()  # Normalize
 
+        # Build parameterized query
+        params = [team_name]
+
         if quarters:
-            quarter_list = ','.join(f"'{q}'" for q in quarters)
-            quarter_filter = f"and quarter in ({quarter_list})"
+            # Validate quarters format
+            for q in quarters:
+                if not re.match(r'^Q[1-4]-\d{4}$', q):
+                    return {'error': f'Invalid quarter format: {q}. Expected Q1-2024, Q2-2024, etc.'}
+            params.extend(quarters)
+            placeholders = ','.join(['?'] * len(quarters))
+            quarter_filter = f"and quarter in ({placeholders})"
         else:
             quarter_filter = ""
 
@@ -37,13 +46,13 @@ class SurveyTools:
             round(pct_neutral_sentiment * 100, 1) as pct_neutral,
             round(pct_negative_sentiment * 100, 1) as pct_negative
         from analytics.fct_survey_metrics
-        where team = '{team_name}'
+        where team = ?
         {quarter_filter}
         order by quarter
         """
 
         try:
-            result = self.conn.execute(query).fetchall()
+            result = self.conn.execute(query, params).fetchall()
             if not result:
                 return {'error': f'No data found for team {team_name}'}
 
@@ -51,9 +60,10 @@ class SurveyTools:
                 'team': team_name,
                 'metrics': [
                     {
-                        'quarter': r[1],
-                        'satisfaction_score': r[3],
+                        'quarter': r[0],
+                        'team': r[1],
                         'response_count': r[2],
+                        'satisfaction_score': r[3],
                         'sentiment_positive': r[4],
                         'sentiment_neutral': r[5],
                         'sentiment_negative': r[6]
