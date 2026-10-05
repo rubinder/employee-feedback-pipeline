@@ -93,7 +93,7 @@ Respond with clear, data-backed answers."""
         ]
 
         response = client.messages.create(
-            model="claude-3-5-sonnet-20241022",
+            model="claude-3-sonnet-20240229",
             max_tokens=1024,
             system=system_prompt,
             tools=tool_definitions,
@@ -141,7 +141,7 @@ Respond with clear, data-backed answers."""
 
             # Second call to get final response
             final_response = client.messages.create(
-                model="claude-3-5-sonnet-20241022",
+                model="claude-3-sonnet-20240229",
                 max_tokens=1024,
                 system=system_prompt,
                 messages=state.messages
