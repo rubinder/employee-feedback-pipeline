@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: raw
+    tables:
+      - name: employees
+      - name: survey_responses
+      - name: teams
+
+models:
+  - name: stg_employees
+    columns:
+      - name: employee_id
+        tests:
+          - not_null
+          - unique
+      - name: employee_name
+        tests:
+          - not_null
+  - name: stg_survey_responses
+    columns:
+      - name: response_id
+        tests:
+          - unique
+          - not_null
+      - name: satisfaction_score
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2, 3, 4, 5]
