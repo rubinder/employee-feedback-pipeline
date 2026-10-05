@@ -1,0 +1,16 @@
+id,name,team,manager_id,start_date
+1,Alice Johnson,Engineering,NULL,2023-01-15
+2,Bob Smith,Engineering,1,2023-03-22
+3,Carol Davis,Engineering,1,2023-06-10
+4,Diana Wilson,Product,NULL,2022-11-05
+5,Eve Martinez,Product,4,2023-02-14
+6,Frank Chen,Product,4,2023-05-20
+7,Grace Lee,Sales,NULL,2023-01-01
+8,Hank Brown,Sales,7,2023-04-12
+9,Iris Taylor,Sales,7,2023-07-08
+10,Jack Moore,Design,NULL,2023-02-01
+11,Karen White,Design,10,2023-05-15
+12,Leo Jackson,Finance,NULL,2022-12-10
+13,Maya Patel,Finance,12,2023-04-01
+14,Noah Anderson,HR,NULL,2023-03-15
+15,Olivia Thomas,HR,14,2023-06-20

@@ -1,0 +1,56 @@
+response_id,employee_id,quarter,satisfaction_score,sentiment_label,comment
+1,1,Q1-2024,5,positive,Good progress on roadmap
+2,1,Q2-2024,4,positive,Sales pipeline strong
+3,1,Q3-2024,4,positive,Product collaborating well
+4,1,Q4-2024,4,positive,Preparing for 2025
+5,2,Q1-2024,4,positive,Great team collaboration
+6,2,Q2-2024,4,positive,Engineering busy with tech debt
+7,2,Q3-2024,5,positive,Cross-team initiatives
+8,2,Q4-2024,5,positive,Team morale good
+9,3,Q1-2024,5,positive,Busy quarter
+10,3,Q2-2024,4,positive,Sales pipeline strong
+11,3,Q3-2024,5,positive,Cross-team initiatives
+12,3,Q4-2024,4,positive,Year-end push
+13,4,Q1-2024,4,positive,Busy quarter
+14,4,Q2-2024,4,positive,Sales pipeline strong
+15,4,Q3-2024,5,positive,Cross-team initiatives
+16,4,Q4-2024,4,positive,Team morale good
+17,5,Q1-2024,4,positive,Good progress on roadmap
+18,5,Q2-2024,4,positive,Product launch success
+19,5,Q3-2024,4,positive,Cross-team initiatives
+20,6,Q1-2024,4,positive,Great team collaboration
+21,6,Q2-2024,4,positive,Engineering busy with tech debt
+22,6,Q3-2024,5,positive,Product collaborating well
+23,6,Q4-2024,3,neutral,Team morale good
+24,7,Q1-2024,4,neutral,Great team collaboration
+25,7,Q2-2024,4,positive,Sales pipeline strong
+26,7,Q3-2024,4,positive,Product collaborating well
+27,7,Q4-2024,3,neutral,Preparing for 2025
+28,8,Q1-2024,5,positive,Great team collaboration
+29,8,Q2-2024,5,positive,Sales pipeline strong
+30,8,Q3-2024,5,positive,Cross-team initiatives
+31,8,Q4-2024,5,positive,Preparing for 2025
+32,9,Q1-2024,4,positive,Great team collaboration
+33,9,Q3-2024,4,positive,Cross-team initiatives
+34,9,Q4-2024,4,positive,Preparing for 2025
+35,10,Q1-2024,4,positive,Busy quarter
+36,10,Q2-2024,4,neutral,Engineering busy with tech debt
+37,10,Q3-2024,4,positive,Product collaborating well
+38,10,Q4-2024,5,positive,Preparing for 2025
+39,11,Q1-2024,4,positive,Busy quarter
+40,11,Q2-2024,4,positive,Product launch success
+41,11,Q4-2024,4,positive,Preparing for 2025
+42,12,Q1-2024,4,positive,Good progress on roadmap
+43,12,Q2-2024,4,positive,Sales pipeline strong
+44,12,Q3-2024,4,positive,Cross-team initiatives
+45,12,Q4-2024,4,positive,Team morale good
+46,13,Q1-2024,4,positive,Good progress on roadmap
+47,13,Q2-2024,3,neutral,Sales pipeline strong
+48,13,Q3-2024,4,positive,Engineering overloaded
+49,13,Q4-2024,4,positive,Team morale good
+50,14,Q1-2024,4,neutral,Great team collaboration
+51,14,Q2-2024,4,positive,Engineering busy with tech debt
+52,14,Q3-2024,4,positive,Cross-team initiatives
+53,14,Q4-2024,4,positive,Year-end push
+54,15,Q2-2024,4,neutral,Sales pipeline strong
+55,15,Q3-2024,4,positive,Cross-team initiatives
