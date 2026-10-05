@@ -9,6 +9,7 @@ client = Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
 
 print("Checking available models...")
 models_to_try = [
+    "claude-haiku-4-5-20251001",
     "claude-opus-4-1",
     "claude-sonnet-4-20250514",
     "claude-3-5-sonnet-20241022",

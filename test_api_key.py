@@ -10,7 +10,7 @@ client = Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
 print("Testing API key...")
 try:
     response = client.messages.create(
-        model="claude-3-5-sonnet-20241022",
+        model="claude-haiku-4-5-20251001",
         max_tokens=100,
         messages=[
             {"role": "user", "content": "Say 'working' in one word."}
